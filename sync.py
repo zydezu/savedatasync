@@ -1,7 +1,14 @@
 from readFileLocations import *
 from downloadSavesToGit import download
 from uploadSavesToGit import upload
+import shutil
 import time
+
+def remove_folder(path):
+    try:
+        shutil.rmtree(path, True)
+    except Exception as e:
+        print(f"Error removing folder {path}: {e}")
 
 def print_separator():
     print("=" * 75)
@@ -18,7 +25,10 @@ def main():
     # download synced files to see if they're newer
     print_separator()
     print("\nDOWNLOAD\n")
-    download()
+    try:
+        download()
+    except:
+        remove_folder("temp")
 
     # upload the changes
     print("\nUPLOAD\n")
