@@ -84,7 +84,6 @@ def download():
                                     updatedApps.append(save.appName)
                                     shutil.copytree(os.path.join("saves", folder), path, dirs_exist_ok=True)
                                     break
-                            print("File paths don't exist- nothing has been overwritten")
                 else:
                     print("Downloaded files are older... not overriding files")
             print("---------------------------------------------------------------------------")
