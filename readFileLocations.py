@@ -107,6 +107,7 @@ def saveData(saveLocations, output=True):
                 fileTime = datetime.fromtimestamp(os.stat(newestFile(path)).st_mtime)
             except:
                 fileTime = datetime.fromtimestamp(0)
+                print("Folder is empty!")
             if output: print("File modified |", fileTime)
             fileInfoPath = os.path.join('saves', f'{save.appName}.txt')
             backupPath = os.path.join('backup', f'{save.appName} {fileTime.strftime("%Y-%m-%d_%H-%M-%S")}')
