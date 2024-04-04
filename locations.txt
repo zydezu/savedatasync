@@ -1,7 +1,7 @@
 yuzu P4G
 C:\Apps\Games\EMU\yuzu\user\nand\user\save\0000000000000000\C9486CB077F532D66F62FA3FBEDD1686\010062B01525C000
 
-PS2 Memory Cards (Persona 3 FES)
+PS2 Memory Cards
 C:\Apps\Games\EMU\pcsx2\memcards
 
 PS2 Stats
