@@ -1,17 +1,17 @@
 vita3k P4G
-C:\Games\EMU\vita3k\user\ux0\user\00\savedata\PCSB00245
+C:\Apps\Games\EMU\vita3k\user\ux0\user\00\savedata\PCSB00245
 
 yuzu P4G
-C:\Games\EMU\yuzu\user\nand\user\save\0000000000000000\C9486CB077F532D66F62FA3FBEDD1686\010062B01525C000
+C:\Apps\Games\EMU\yuzu\user\nand\user\save\0000000000000000\C9486CB077F532D66F62FA3FBEDD1686\010062B01525C000
 
 PS2 Memory Cards (Persona 3 FES)
-C:\Games\EMU\pcsx2\memcards
+C:\Apps\Games\EMU\pcsx2\memcards
 
 PS2 Stats
-C:\Games\EMU\pcsx2\inis\playtime.dat
+C:\Apps\Games\EMU\pcsx2\inis\playtime.dat
 
 RPCS3 Sonic Unleashed
-C:\Games\EMU\rpcs3\dev_hdd0\home\00000001\savedata\BLUS30244
+C:\Apps\Games\EMU\rpcs3\dev_hdd0\home\00000001\savedata\BLUS30244
 
 PS1 Memory Cards
-C:\Games\EMU\duckstation\memcards
+C:\Apps\Games\EMU\duckstation\memcards
