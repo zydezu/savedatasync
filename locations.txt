@@ -1,6 +1,3 @@
-vita3k P4G
-C:\Apps\Games\EMU\vita3k\user\ux0\user\00\savedata\PCSB00245
-
 yuzu P4G
 C:\Apps\Games\EMU\yuzu\user\nand\user\save\0000000000000000\C9486CB077F532D66F62FA3FBEDD1686\010062B01525C000
 
