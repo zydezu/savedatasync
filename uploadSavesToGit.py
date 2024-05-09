@@ -32,7 +32,7 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
             print(f"{bcolors.OKBLUE}",changedString,f"have been updated{bcolors.ENDC}")
         else:
             changedString = changed[0]
-            print(f"{bcolors.OKBLUE}",changedString,f"has been updated{bcolors.ENDC}")
+            print(f"{bcolors.OKBLUE}" + changedString + f" has been updated{bcolors.ENDC}")
         changedString = f"updated savefiles: {changedString}"
     else:
         print(f"{bcolors.OKBLUE}No save data has changed!{bcolors.ENDC}")
