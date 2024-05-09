@@ -12,3 +12,9 @@ C:\Apps\Games\EMU\rpcs3\dev_hdd0\home\00000001\savedata\BLUS30244
 
 PS1 Memory Cards
 C:\Apps\Games\EMU\duckstation\memcards
+
+Gamecube Memory Card
+C:\Apps\Games\EMU\dolphin\User\GC\USA\Card A
+
+Mario Kart Wii
+C:\Apps\Games\EMU\dolphin\User\Wii\title\00010004\524d4345\data
