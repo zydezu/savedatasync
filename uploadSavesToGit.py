@@ -41,7 +41,7 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
     print("Checking git repo status...")
     print(f"{bcolors.LINE}==========================================================================={bcolors.ENDC}")
 
-    subprocess.call(["git", "pull", "--allow-unrelated-histories"])
+    subprocess.call(["git", "pull"])
     subprocess.call(["git", "add", "."])
     subprocess.call(["git", "commit", "-m", changedString])
     subprocess.call(["git", "push"])
