@@ -42,7 +42,6 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
     print(f"{bcolors.LINE}==========================================================================={bcolors.ENDC}")
 
     for i in range(0,3):
-        print(i)
         subprocess.call(["git", "pull"])
         subprocess.call(["git", "add", "."])
         subprocess.call(["git", "commit", "-m", changedString])
