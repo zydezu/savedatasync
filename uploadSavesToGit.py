@@ -29,7 +29,7 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
     if (isaltered):
         if len(changed) > 1:
             changedString = f"{", ".join(changed[:-1])}, and {changed[-1]}"
-            print(f"{bcolors.OKBLUE}" +changedString + f"have been updated{bcolors.ENDC}")
+            print(f"{bcolors.OKBLUE}" +changedString + f" have been updated{bcolors.ENDC}")
         else:
             changedString = changed[0]
             print(f"{bcolors.OKBLUE}" + changedString + f" has been updated{bcolors.ENDC}")
