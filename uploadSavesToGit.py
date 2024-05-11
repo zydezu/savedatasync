@@ -41,10 +41,11 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
     print("Checking git repo status...")
     print(f"{bcolors.LINE}==========================================================================={bcolors.ENDC}")
 
-    subprocess.call(["git", "pull"])
-    subprocess.call(["git", "add", "."])
-    subprocess.call(["git", "commit", "-m", changedString])
-    subprocess.call(["git", "push"])
+    for i in range(0,2):
+        subprocess.call(["git", "pull"])
+        subprocess.call(["git", "add", "."])
+        subprocess.call(["git", "commit", "-m", changedString])
+        subprocess.call(["git", "push"])
 
     print(f"{bcolors.LINE}==========================================================================={bcolors.ENDC}")
 
