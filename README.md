@@ -3,6 +3,8 @@
 Sync various save data across emulators because I'm lazy.
 
 ![2023-10-01_07-07-11_582_Vita3K](https://github.com/zydezu/savedatasync/assets/50119098/008ae336-b24b-4d6c-bf30-329a38cb1932)
+![Shin Megami Tensei - Persona 3 FES_SLUS-21621_20240512203921](https://github.com/user-attachments/assets/e35615bf-77dd-4acd-92cb-9fd3567156f4)
+
 
 ## Recent changes
 
