@@ -1,14 +1,8 @@
-yuzu P4G
-C:\Apps\Games\EMU\yuzu\user\nand\user\save\0000000000000000\C9486CB077F532D66F62FA3FBEDD1686\010062B01525C000
-
 PS2 Memory Cards
 C:\Apps\Games\EMU\pcsx2\memcards
 
 PS2 Stats
 C:\Apps\Games\EMU\pcsx2\inis\playtime.dat
-
-RPCS3 Sonic Unleashed
-C:\Apps\Games\EMU\rpcs3\dev_hdd0\home\00000001\savedata\BLUS30244
 
 PS1 Memory Cards
 C:\Apps\Games\EMU\duckstation\memcards
@@ -18,3 +12,6 @@ C:\Apps\Games\EMU\dolphin\User\GC\USA\Card A
 
 Mario Kart Wii
 C:\Apps\Games\EMU\dolphin\User\Wii\title\00010004\524d4345\data
+
+Super Paper Mario
+C:\Apps\Games\EMU\dolphin\User\Wii\title\00010000\52385045\data
