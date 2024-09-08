@@ -7,6 +7,12 @@ C:\Apps\Games\EMU\pcsx2\inis\playtime.dat
 PS1 Memory Cards
 C:\Apps\Games\EMU\duckstation\memcards
 
+Dolphin Settings
+C:\Apps\Games\EMU\dolphin\User\GameSettings
+
+Dolphin Profiles
+C:\Apps\Games\EMU\dolphin\User\Config\Profiles
+
 Gamecube Memory Card
 C:\Apps\Games\EMU\dolphin\User\GC\USA\Card A
 
