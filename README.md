@@ -36,8 +36,7 @@ ___
 ## How its done
 
 > [!CAUTION]
-> Please backup your files outside of this
-> Practise good computer usage
+> Please backup your files outside of this! Practise good computer usage!
 
 ### Overview
 
