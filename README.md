@@ -36,8 +36,7 @@ ___
 ## How its done
 
 > [!CAUTION]
-> what kind of fuckass uses github . com dot io as a cloud storage provider  
-> surely this wont bite me in the ass in the forecoming future
+> Please backup your files outside of this! Practise good computer usage!
 
 ### Overview
 
