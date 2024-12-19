@@ -21,3 +21,6 @@ C:\Apps\Games\EMU\dolphin\User\Wii\title\00010004\524d4345\data
 
 Super Paper Mario
 C:\Apps\Games\EMU\dolphin\User\Wii\title\00010000\52385045\data
+
+Mario Kart Wii RetroWFC
+C:\Apps\Games\EMU\dolphin\User\Load\Riivolution\Retro Rewind v6.0.24\riivolution\save\RetroWFC
