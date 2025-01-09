@@ -22,8 +22,14 @@ C:\Apps\Games\EMU\dolphin\User\Wii\title\00010004\524d4345\data
 Super Paper Mario
 C:\Apps\Games\EMU\dolphin\User\Wii\title\00010000\52385045\data
 
+Mario Kart Wii RetroWFC
+C:\Apps\Games\EMU\dolphin\User\Load\Riivolution\Retro Rewind v6.0.24\riivolution\save\RetroWFC
+
 Persona 4 Ryujinx
 C:\Apps\Games\EMU\ryujinx\publish\portable\bis\user\save\0000000000000003\0
+<<<<<<< HEAD
 
 Parallel Saves
 C:\Users\User\AppData\Local\parallel-launcher\data\retro-data\saves
+=======
+>>>>>>> b13a733eae3cd43190a9e693a9fd06d4cbb6e54f
