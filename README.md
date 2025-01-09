@@ -36,13 +36,12 @@ ___
 ## How its done
 
 > [!CAUTION]
-> Please backup your files outside of this! Practise good computer usage!
+> Always make sure to back up your files!
 
 ### Overview
 
 > [!IMPORTANT]
 > Use `sync.py` instead  
-~~Running `upload saves to git.py` should always been done right after finishing playing a game/changing files, and downloading should be done before opening the game `download saves from git.py` (though theoretically downloading can be done any time after uploading)~~
 
 This process uses git (with github to host) to sync save files from (in my case) various emulators across multiple devices. This is done by writing app names and file paths to `locations.txt`, running `upload saves to git.py` to update your save data, and then running `download saves from git.py`. Dates and file hashes are checked to determine when to update locally stored save data. Backups are created as a precautionary measure to prevent data loss.
 
@@ -66,7 +65,7 @@ The `gitFilePath.txt` contains a reference to the master branch, with the main.z
 
 ### Uploading
 
-Play a game as normal, when you're done, run `upload saves to git.py`, you may see an output like this:
+This is how the console output for the upload phase of `sync.py` could look:
 
 ```powershell
 ===========================================================================
@@ -114,7 +113,7 @@ Next, the files are zipped and copied to `saves\[appname]` (eg: `save\vita3k P4G
 
 ### Downloading
 
-On other devices, run `download saves from git.py`. You may see an output like this:
+This is how the console output for the download phase of `sync.py` could look:
 
 ```powershell
 ===========================================================================
