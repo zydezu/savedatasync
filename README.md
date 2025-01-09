@@ -41,7 +41,7 @@ ___
 ### Overview
 
 > [!IMPORTANT]
-> Use `sync.py` instead  
+> Use `sync.py` to sync your files.  
 
 This process uses git (with github to host) to sync save files from (in my case) various emulators across multiple devices. This is done by writing app names and file paths to `locations.txt`, running `upload saves to git.py` to update your save data, and then running `download saves from git.py`. Dates and file hashes are checked to determine when to update locally stored save data. Backups are created as a precautionary measure to prevent data loss.
 
