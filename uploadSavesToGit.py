@@ -25,7 +25,7 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
     if overrideChangedMessage:
         changed = overrideChangedMessage
 
-    changedString = "update repo"
+    changedString = "update save files"
     if (isaltered):
         if len(changed) > 1:
             changedString = f"{", ".join(changed[:-1])}, and {changed[-1]}"
@@ -33,7 +33,7 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
         else:
             changedString = changed[0]
             print(f"{bcolors.OKBLUE}" + changedString + f" has been updated{bcolors.ENDC}")
-        changedString = f"updated savefiles: {changedString}"
+        changedString = f"Updated save files: {changedString}"
     else:
         print(f"{bcolors.OKBLUE}No save data has changed!{bcolors.ENDC}")
 
@@ -44,7 +44,7 @@ def upload(overrideAltered, overrideChangedMessage, output=True):
     for i in range(0,3):
         subprocess.call(["git", "pull"])
         subprocess.call(["git", "add", "."])
-        subprocess.call(["git", "commit", "-m", changedString])
+        subprocess.call(["git", "commit", "-m", f"AUTOMATED: {changedString}"])
         subprocess.call(["git", "push"])
 
     print(f"{bcolors.LINE}==========================================================================={bcolors.ENDC}")
