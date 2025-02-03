@@ -1,11 +1,17 @@
+PS1 Memory Cards
+C:\Apps\Games\EMU\duckstation\memcards
+
+Parallel Saves
+C:\Users\User\AppData\Local\parallel-launcher\data\retro-data\saves
+
 PS2 Memory Cards
 C:\Apps\Games\EMU\pcsx2\memcards
 
 PS2 Stats
 C:\Apps\Games\EMU\pcsx2\inis\playtime.dat
 
-PS1 Memory Cards
-C:\Apps\Games\EMU\duckstation\memcards
+PS3 Saves
+C:\Apps\Games\EMU\rpcs3\dev_hdd0\home\00000001\savedata
 
 Dolphin Settings
 C:\Apps\Games\EMU\dolphin\User\GameSettings
@@ -14,7 +20,7 @@ Dolphin Profiles
 C:\Apps\Games\EMU\dolphin\User\Config\Profiles
 
 Gamecube Memory Card
-C:\Apps\Games\EMU\dolphin\User\GC\USA\Card A
+C:\Apps\Games\EMU\dolphin\User\GC
 
 Mario Kart Wii
 C:\Apps\Games\EMU\dolphin\User\Wii\title\00010004\524d4345\data
@@ -23,10 +29,4 @@ Super Paper Mario
 C:\Apps\Games\EMU\dolphin\User\Wii\title\00010000\52385045\data
 
 Mario Kart Wii RetroWFC
-C:\Apps\Games\EMU\dolphin\User\Load\Riivolution\Retro Rewind v6.0.24\riivolution\save\RetroWFC
-
-Persona 4 Ryujinx
-C:\Apps\Games\EMU\ryujinx\publish\portable\bis\user\save\0000000000000003\0
-
-Parallel Saves
-C:\Users\User\AppData\Local\parallel-launcher\data\retro-data\saves
+C:\Apps\Games\EMU\dolphin\User\Load\Riivolution\Retro Rewind v6.1\riivolution\save\RetroWFC
