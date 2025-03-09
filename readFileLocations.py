@@ -45,24 +45,24 @@ def readLocationsFile():
     lines = f.readlines()
     f.close()
 
+    while len(lines) > 0 and lines[-1].strip() == "":
+        lines.pop()
+
     saveLocations = []
     currentSaveLocation = None
     blank = True
     for line in lines:
         linestripped = line.strip()
-        if (blank):
-            #print("ADDED APP NAME : ",linestripped)
+        if blank:
             currentSaveLocation = Savelocation(linestripped)
             blank = False
-        elif (len(linestripped) <= 1):
-            #add instance to list
+        elif len(linestripped) <= 1:
             blank = True
             saveLocations.append(currentSaveLocation)
         else:
-            #print("FILE PATH : ",linestripped)
             currentSaveLocation.addLocation(linestripped)
 
-    if (not blank):
+    if not blank:
         saveLocations.append(currentSaveLocation)
 
     return saveLocations
@@ -74,7 +74,7 @@ def remove_folder(path):
         print(f"Error removing folder {path}: {e}")
 
 def newestFile(path):
-    if (os.path.isfile(path)):
+    if os.path.isfile(path):
         return path
     else:
         files = os.listdir(path)
