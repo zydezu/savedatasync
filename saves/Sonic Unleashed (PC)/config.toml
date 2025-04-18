@@ -1,5 +1,5 @@
 [System]
-Language = "English"
+Language = "Japanese"
 VoiceLanguage = "English"
 Subtitles = true
 Hints = true
@@ -78,4 +78,4 @@ CutsceneAspectRatio = "Original"
 UIAlignmentMode = "Edge"
 
 [Update]
-LastChecked = 1743741143
+LastChecked = 1744341003
