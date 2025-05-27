@@ -110,7 +110,7 @@ def saveData(saveLocations, output=True):
                 print("Folder is empty!")
             if output: print("File modified |", fileTime)
             fileInfoPath = os.path.join('saves', f'{save.appName}.txt')
-            backupPath = os.path.join('backup', f'{save.appName} {fileTime.strftime("%Y-%m-%d_%H-%M-%S")}')
+            backupPath = os.path.join('backup', f'{fileTime.strftime("%Y-%m-%d_%H-%M-%S")} {save.appName}')
             if output: print("Save data hash |", pathHash)
 
             # check if an info file exists, and 
