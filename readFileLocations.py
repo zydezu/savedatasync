@@ -144,7 +144,6 @@ def saveData(saveLocations, output=True):
                         if output: print("Zip is too big, using folder directory instead")
                         shutil.copytree(path, os.path.join('saves', save.appName), dirs_exist_ok=True)
                         os.remove(os.path.join('saves', f'{save.appName}.zip'))
-                    
 
                 newinfo = [str(fileTime) + "\n", pathHash]
                 with open(fileInfoPath, 'w') as f:
