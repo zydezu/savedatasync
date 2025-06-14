@@ -110,7 +110,7 @@ def saveData(saveLocations, output=True):
                 print("Folder is empty!")
             if output: print("File modified |", fileTime)
             fileInfoPath = os.path.join('saves', f'{save.appName}.txt')
-            backupPath = os.path.join('backup', f'{save.appName} {fileTime.strftime("%Y-%m-%d_%H-%M-%S")}')
+            backupPath = os.path.join('backup', f'{fileTime.strftime("%Y-%m-%d_%H-%M-%S")} {save.appName}')
             if output: print("Save data hash |", pathHash)
 
             # check if an info file exists, and 
@@ -144,7 +144,6 @@ def saveData(saveLocations, output=True):
                         if output: print("Zip is too big, using folder directory instead")
                         shutil.copytree(path, os.path.join('saves', save.appName), dirs_exist_ok=True)
                         os.remove(os.path.join('saves', f'{save.appName}.zip'))
-                    
 
                 newinfo = [str(fileTime) + "\n", pathHash]
                 with open(fileInfoPath, 'w') as f:
