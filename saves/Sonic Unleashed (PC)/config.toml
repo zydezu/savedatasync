@@ -1,6 +1,6 @@
 [System]
 Language = "English"
-VoiceLanguage = "English"
+VoiceLanguage = "Japanese"
 Subtitles = true
 Hints = true
 ControlTutorial = true
@@ -40,7 +40,7 @@ Key_RightStickLeft = "???"
 Key_RightStickRight = "???"
 
 [Audio]
-MasterVolume = 0.30000067
+MasterVolume = 0.3
 MusicVolume = 1
 EffectsVolume = 1
 ChannelConfiguration = "Stereo"
@@ -58,7 +58,7 @@ WindowHeight = 720
 WindowState = "Normal"
 Monitor = 0
 AspectRatio = "Auto"
-ResolutionScale = 1.000001
+ResolutionScale = 1
 Fullscreen = true
 VSync = true
 TripleBuffering = "Auto"
@@ -66,10 +66,10 @@ FPS = 120
 ShowFPS = true
 MaxFrameLatency = 2
 Brightness = 0.5
-AntiAliasing = "4x MSAA"
+AntiAliasing = "8x MSAA"
 TransparencyAntiAliasing = true
 AnisotropicFiltering = 16
-ShadowResolution = "4096"
+ShadowResolution = "8192"
 GITextureFiltering = "Bicubic"
 DepthOfFieldQuality = "Auto"
 MotionBlur = "Enhanced"
@@ -78,4 +78,4 @@ CutsceneAspectRatio = "Original"
 UIAlignmentMode = "Edge"
 
 [Update]
-LastChecked = 1745265809
+LastChecked = 1748919421
