@@ -58,7 +58,7 @@ WindowHeight = 720
 WindowState = "Normal"
 Monitor = 0
 AspectRatio = "Auto"
-ResolutionScale = 1
+ResolutionScale = 1.000001
 Fullscreen = true
 VSync = true
 TripleBuffering = "Auto"
@@ -78,4 +78,4 @@ CutsceneAspectRatio = "Original"
 UIAlignmentMode = "Edge"
 
 [Update]
-LastChecked = 1748919421
+LastChecked = 1754859855
