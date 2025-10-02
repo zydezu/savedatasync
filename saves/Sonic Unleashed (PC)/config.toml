@@ -1,0 +1,81 @@
+[System]
+Language = "English"
+VoiceLanguage = "Japanese"
+Subtitles = true
+Hints = true
+ControlTutorial = true
+AchievementNotifications = true
+TimeOfDayTransition = "Xbox"
+ShowConsole = false
+
+[Input]
+HorizontalCamera = "Normal"
+VerticalCamera = "Normal"
+Vibration = true
+AllowBackgroundInput = false
+ControllerIcons = "Auto"
+
+[Bindings]
+Key_A = "S"
+Key_B = "D"
+Key_X = "A"
+Key_Y = "W"
+Key_DPadUp = "???"
+Key_DPadDown = "???"
+Key_DPadLeft = "???"
+Key_DPadRight = "???"
+Key_Start = "RETURN"
+Key_Back = "BACKSPACE"
+Key_LeftTrigger = "1"
+Key_RightTrigger = "3"
+Key_LeftBumper = "Q"
+Key_RightBumper = "E"
+Key_LeftStickUp = "UP"
+Key_LeftStickDown = "DOWN"
+Key_LeftStickLeft = "LEFT"
+Key_LeftStickRight = "RIGHT"
+Key_RightStickUp = "???"
+Key_RightStickDown = "???"
+Key_RightStickLeft = "???"
+Key_RightStickRight = "???"
+
+[Audio]
+MasterVolume = 0.3
+MusicVolume = 1
+EffectsVolume = 1
+ChannelConfiguration = "Stereo"
+MusicAttenuation = true
+BattleTheme = false
+
+[Video]
+GraphicsDevice = ""
+GraphicsAPI = "Auto"
+WindowX = 805240832
+WindowY = 805240832
+WindowSize = -1
+WindowWidth = 1280
+WindowHeight = 720
+WindowState = "Normal"
+Monitor = 0
+AspectRatio = "Auto"
+ResolutionScale = 1.000001
+Fullscreen = true
+VSync = true
+TripleBuffering = "Auto"
+FPS = 120
+ShowFPS = true
+MaxFrameLatency = 2
+Brightness = 0.5
+AntiAliasing = "8x MSAA"
+TransparencyAntiAliasing = true
+AnisotropicFiltering = 16
+ShadowResolution = "8192"
+GITextureFiltering = "Bicubic"
+DepthOfFieldQuality = "Auto"
+MotionBlur = "Enhanced"
+XboxColorCorrection = false
+CutsceneAspectRatio = "Original"
+UIAlignmentMode = "Edge"
+
+[Update]
+LastChecked = 1754859855
