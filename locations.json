@@ -1,0 +1,46 @@
+[
+  {
+    "name": "PS1 Memory Cards",
+    "paths": ["/home/zy/.local/share/duckstation/memcards"]
+  },
+  {
+    "name": "PS2 Memory Cards",
+    "paths": ["/home/zy/.config/PCSX2/memcards"]
+  },
+  {
+    "name": "PCSX2 Settings",
+    "paths": ["/home/zy/.config/PCSX2/inis"]
+  },
+  {
+    "name": "PS3 Saves",
+    "paths": ["/home/zy/.config/rpcs3/dev_hdd0/home/00000001/savedata"]
+  },
+  {
+    "name": "Dolphin Settings",
+    "paths": ["/home/zy/.local/share/dolphin-emu/GameSettings"]
+  },
+  {
+    "name": "Dolphin Profiles",
+    "paths": ["/home/zy/.config/dolphin-emu/Profiles"]
+  },
+  {
+    "name": "Gamecube Memory Card",
+    "paths": ["/home/zy/.local/share/dolphin-emu/GC"]
+  },
+  {
+    "name": "Mario Kart Wii",
+    "paths": ["/home/zy/.local/share/dolphin-emu/Wii/title/00010004/524d4345/data"]
+  },
+  {
+    "name": "Super Paper Mario",
+    "paths": ["/home/zy/.local/share/dolphin-emu/Wii/title/00010000/52385045/data"]
+  },
+  {
+    "name": "Mario Kart Wii RetroWFC",
+    "paths": ["/home/zy/.local/share/dolphin-emu/Load/Riivolution/RetroRewind/riivolution/save/RetroWFC"]
+  },
+  {
+    "name": "Sonic Unleashed (PC)",
+    "paths": ["/home/zy/.config/UnleashedRecomp/save"]
+  }
+]
