@@ -17,6 +17,11 @@ class bcolors:
     UNDERLINE = "\033[4m"
 
 
+def print_separator(char="="):
+    line = char * 75
+    print(f"{bcolors.LINE}{line}{bcolors.ENDC}")
+
+
 class Savelocation:
     def __init__(self, appname):
         assert appname != "", "Appname is empty, check formatting of locations.txt"
@@ -31,10 +36,10 @@ class Savelocation:
 
 
 def calculateFolderHash(folderPath, algorithm="sha256", block_size=65536):
-    """Calculate the hash of all files in a folder using the specified algorithm"""
     hash_object = hashlib.new(algorithm)
     for foldername, subfolders, filenames in os.walk(folderPath):
-        for filename in filenames:
+        subfolders.sort()
+        for filename in sorted(filenames):
             file_path = os.path.join(foldername, filename)
             with open(file_path, "rb") as f:
                 for block in iter(lambda: f.read(block_size), b""):
@@ -43,13 +48,10 @@ def calculateFolderHash(folderPath, algorithm="sha256", block_size=65536):
 
 
 def readLocationsFile():
-    """Make a list of Savelocation instances and return it"""
+    with open("locations.txt", "r") as f:
+        lines = f.readlines()
 
-    f = open("locations.txt", "r")
-    lines = f.readlines()
-    f.close()
-
-    while len(lines) > 0 and lines[-1].strip() == "":
+    while lines and lines[-1].strip() == "":
         lines.pop()
 
     saveLocations = []
@@ -82,10 +84,16 @@ def remove_folder(path):
 def newestFile(path):
     if os.path.isfile(path):
         return path
-    else:
-        files = os.listdir(path)
-        paths = [os.path.join(path, basename) for basename in files]
-        return max(paths, key=os.path.getmtime)
+    newest = None
+    newest_mtime = -1
+    for dirpath, _, filenames in os.walk(path):
+        for filename in filenames:
+            fpath = os.path.join(dirpath, filename)
+            mtime = os.path.getmtime(fpath)
+            if mtime > newest_mtime:
+                newest_mtime = mtime
+                newest = fpath
+    return newest
 
 
 def saveData(saveLocations, output=True):
@@ -111,15 +119,13 @@ def saveData(saveLocations, output=True):
                         print("Path doesn't exist |", path)
                     if path == save.filePaths[-1]:
                         if output:
-                            print(
-                                f"{bcolors.LINE}---------------------------------------------------------------------------{bcolors.ENDC}"
-                            )
-                    continue  # skip to next path iteration
+                            print_separator("-")
+                    continue
 
             pathHash = calculateFolderHash(path)
             try:
                 fileTime = datetime.fromtimestamp(os.stat(newestFile(path)).st_mtime)
-            except:
+            except Exception:
                 fileTime = datetime.fromtimestamp(0)
                 print("Folder is empty!")
             if output:
@@ -131,8 +137,6 @@ def saveData(saveLocations, output=True):
             if output:
                 print("Save data hash |", pathHash)
 
-            # check if an info file exists, and
-            # if it does read the hash from it
             oldHash = ""
             if os.path.isfile(fileInfoPath):
                 with open(fileInfoPath, "r") as f:
@@ -159,19 +163,16 @@ def saveData(saveLocations, output=True):
                     if not os.path.exists(newdir):
                         os.makedirs(newdir)
                     shutil.copy2(path, os.path.join("saves", save.appName))
-                    pass
                 else:
                     if output:
                         print(f"{bcolors.WARNING}Compressing file...{bcolors.ENDC}")
                     shutil.make_archive(
                         os.path.join("saves", save.appName), "zip", path
-                    )  # zip file
+                    )
                     fileSize = os.path.getsize(
                         os.path.join("saves", f"{save.appName}.zip")
-                    )  # check file size of zip
-                    if (
-                        fileSize > 100000000
-                    ):  # files above 100MB are too big for github, so just use the folder instead
+                    )
+                    if fileSize > 100000000:
                         if output:
                             print("Zip is too big, using folder directory instead")
                         shutil.copytree(
@@ -206,8 +207,6 @@ def saveData(saveLocations, output=True):
                         f"{bcolors.WARNING}Files are the same... not copying files{bcolors.ENDC}"
                     )
             if output:
-                print(
-                    f"{bcolors.LINE}---------------------------------------------------------------------------{bcolors.ENDC}"
-                )
+                print_separator("-")
 
     return isaltered, changed

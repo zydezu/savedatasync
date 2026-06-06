@@ -1,75 +1,47 @@
 import subprocess
 
-from readFileLocations import *
+from readFileLocations import (
+    bcolors,
+    print_separator,
+    readLocationsFile,
+    saveData,
+)
 
 
-class bcolors:
-    LINE = "\033[90m"
-    HEADER = "\033[95m"
-    OKBLUE = "\033[94m"
-    OKCYAN = "\033[96m"
-    OKGREEN = "\033[92m"
-    WARNING = "\033[93m"
-    FAIL = "\033[91m"
-    ENDC = "\033[0m"
-    BOLD = "\033[1m"
-    UNDERLINE = "\033[4m"
-
-
-def upload(overrideAltered, overrideChangedMessage, output=True):
-    if output:
+def upload(is_altered=None, changed=None):
+    if is_altered is None:
+        print_separator()
         print(
-            f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
+            f"{bcolors.OKBLUE}Checking each application's save data for changes{bcolors.ENDC}"
         )
-    if output:
-        print(f"{bcolors.OKBLUE}Checking each application's save data for changes")
-    if output:
-        print(
-            f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
+        print_separator()
+        saveLocations = readLocationsFile()
+        is_altered, changed = saveData(saveLocations)
+
+    if is_altered:
+        label = (
+            f"{', '.join(changed[:-1])}, and {changed[-1]}"
+            if len(changed) > 1
+            else changed[0]
         )
-
-    saveLocations = readLocationsFile()
-    isaltered, changed = saveData(saveLocations, output)
-    if overrideAltered:
-        isaltered = overrideAltered
-    if overrideChangedMessage:
-        changed = overrideChangedMessage
-
-    changedString = "update save files"
-    if isaltered:
-        if len(changed) > 1:
-            changedString = f"{', '.join(changed[:-1])}, and {changed[-1]}"
-            print(
-                f"{bcolors.OKBLUE}"
-                + changedString
-                + f" have been updated{bcolors.ENDC}"
-            )
-        else:
-            changedString = changed[0]
-            print(
-                f"{bcolors.OKBLUE}" + changedString + f" has been updated{bcolors.ENDC}"
-            )
-        changedString = f"Updated save files: {changedString}"
+        noun = "have" if len(changed) > 1 else "has"
+        print(f"{bcolors.OKBLUE}{label} {noun} been updated{bcolors.ENDC}")
+        commit_msg = f"Updated save files: {label}"
     else:
         print(f"{bcolors.OKBLUE}No save data has changed!{bcolors.ENDC}")
+        commit_msg = "update save files"
 
-    print(
-        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
-    )
+    print_separator()
     print("Checking git repo status...")
-    print(
-        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
-    )
+    print_separator()
 
-    for i in range(0, 3):
-        subprocess.call(["git", "pull"])
-        subprocess.call(["git", "add", "."])
-        subprocess.call(["git", "commit", "-m", f"AUTOMATED: {changedString}"])
+    subprocess.call(["git", "pull"])
+    subprocess.call(["git", "add", "."])
+    rc = subprocess.call(["git", "commit", "-m", f"AUTOMATED: {commit_msg}"])
+    if rc == 0:
         subprocess.call(["git", "push"])
 
-    print(
-        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
-    )
+    print_separator()
 
 
 if __name__ == "__main__":

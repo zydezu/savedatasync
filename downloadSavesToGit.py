@@ -2,47 +2,35 @@ import os
 import shutil
 import urllib.request
 
-from readFileLocations import *
+from readFileLocations import (
+    bcolors,
+    print_separator,
+    readLocationsFile,
+)
 
 
-class bcolors:
-    LINE = "\033[90m"
-    HEADER = "\033[95m"
-    OKBLUE = "\033[94m"
-    OKCYAN = "\033[96m"
-    OKGREEN = "\033[92m"
-    WARNING = "\033[93m"
-    FAIL = "\033[91m"
-    ENDC = "\033[0m"
-    BOLD = "\033[1m"
-    UNDERLINE = "\033[4m"
+def _human_size(n: float) -> str:
+    for unit in (" bytes", "KB", "MB", "GB", "TB", "PB", "EB"):
+        if n < 1024:
+            return f"{n:.2f}{unit}"
+        n /= 1024
+    return f"{n:.2f} EB"
 
 
 def download():
-    def normalisedSize(bytes, units=[" bytes", "KB", "MB", "GB", "TB", "PB", "EB"]):
-        if bytes < 1024 or len(units) == 1:
-            return f"{round(bytes, 2):.2f}{units[0]}"
-        else:
-            return normalisedSize(bytes / 1024, units[1:])
+    with open("gitFilePath.txt") as f:
+        url = f.readline().strip()
 
-    def downloadRepoFile(url):
-        print(f"{bcolors.WARNING}Downloading files from github...{bcolors.ENDC}")
-        urllib.request.urlretrieve(url, "main.zip")
-        fileSize = os.path.getsize("main.zip")
-        print(f"{bcolors.WARNING}Size: {normalisedSize(fileSize)}{bcolors.ENDC}")
-        shutil.unpack_archive("main.zip", "temp", "zip")
-        print(f"{bcolors.WARNING}Cleaning up...{bcolors.ENDC}")
-        os.remove("main.zip")
+    saves = {s.appName: s for s in readLocationsFile()}
+    print_separator()
 
-    filepath = ""
-    with open("gitFilePath.txt", "r") as f:
-        filepath = f.readline()
-    saveLocations = readLocationsFile()
+    print(f"{bcolors.WARNING}Downloading files from github...{bcolors.ENDC}")
+    urllib.request.urlretrieve(url, "main.zip")
     print(
-        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
+        f"{bcolors.WARNING}Size: {_human_size(os.path.getsize('main.zip'))}{bcolors.ENDC}"
     )
-
-    downloadRepoFile(filepath)
+    shutil.unpack_archive("main.zip", "temp", "zip")
+    os.remove("main.zip")
     shutil.rmtree("tocheck", True)
     shutil.copytree(
         os.path.join("temp", "savedatasync-main", "saves"),
@@ -52,120 +40,97 @@ def download():
     shutil.rmtree("temp", True)
     print("Done!")
 
-    print(
-        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
-    )
+    print_separator()
     print(f"{bcolors.OKBLUE}Checking whether to update local save data{bcolors.ENDC}")
-    print(
-        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
-    )
+    print_separator()
 
-    for foldername, subfolders, filenames in os.walk("tocheck"):
-        ### unzip zip files
-        for file in filenames:
-            if file.lower().endswith(".zip"):
+    for _, _, filenames in os.walk("tocheck"):
+        for name in filenames:
+            if name.lower().endswith(".zip"):
                 shutil.unpack_archive(
-                    os.path.join("tocheck", file),
-                    os.path.join("tocheck", file.removesuffix(".zip")),
+                    os.path.join("tocheck", name),
+                    os.path.join("tocheck", name.removesuffix(".zip")),
                     "zip",
                 )
+        break  # top-level only
 
-    updatedApps = []
+    updated = []
 
-    for foldername, subfolders, filenames in os.walk("tocheck"):
+    for _, subfolders, _ in os.walk("tocheck"):
         for folder in subfolders:
-            print(f"Checking save data |{bcolors.OKGREEN}", folder, f"{bcolors.ENDC}")
-            f = open(os.path.join("tocheck", folder + ".txt"), "r")
-            lines = f.readlines()
-            downloadeddate = lines[0].strip()
-            downloadedhash = lines[1].strip()
-            print("Downloaded file hash |", downloadeddate)
-            print("Downloaded file hash |", downloadedhash)
-            f.close()
+            print(f"Checking save data | {bcolors.OKGREEN}{folder}{bcolors.ENDC}")
 
-            currentdate = ""
-            currenthash = ""
+            with open(os.path.join("tocheck", folder + ".txt")) as f:
+                lines = f.readlines()
+            dl_date = lines[0].strip()
+            dl_hash = lines[1].strip()
+            print("Downloaded file date |", dl_date)
+            print("Downloaded file hash |", dl_hash)
+
             try:
-                with open(os.path.join("saves", folder + ".txt"), "r") as f:
+                with open(os.path.join("saves", folder + ".txt")) as f:
                     lines = f.readlines()
-                    currentdate = lines[0].strip()
-                    currenthash = lines[1].strip()
-                print("Current file date |", currentdate)
-                print("Current file hash |", currenthash)
-            except:
-                currentdate = "0000-00-00 00:00:00.000000"
-                currenthash = ""
+                cur_date = lines[0].strip()
+                cur_hash = lines[1].strip()
+                print("Current file date |", cur_date)
+                print("Current file hash |", cur_hash)
+            except Exception:
+                cur_date = "0000-00-00 00:00:00.000000"
+                cur_hash = ""
 
-            if downloadedhash == currenthash:
+            if dl_hash == cur_hash:
                 print(
                     f"{bcolors.WARNING}Files are the same... not overriding files{bcolors.ENDC}"
                 )
+            elif dl_date > cur_date:
+                print("Downloaded files are newer... overriding files")
+                shutil.copytree(
+                    os.path.join("tocheck", folder),
+                    os.path.join("saves", folder),
+                    dirs_exist_ok=True,
+                )
+                with open(os.path.join("saves", folder + ".txt"), "w") as f:
+                    f.write(dl_date + "\n")
+                    f.write(dl_hash)
+
+                save = saves.get(folder)
+                if save:
+                    for path in save.filePaths:
+                        if os.path.isdir(path):
+                            updated.append(save.appName)
+                            shutil.copytree(
+                                os.path.join("saves", folder), path, dirs_exist_ok=True
+                            )
+                            break
+                        if os.path.isfile(path):
+                            files = os.listdir(os.path.join("saves", folder))
+                            if files:
+                                shutil.copy2(
+                                    os.path.join("saves", folder, files[0]), path
+                                )
+                            updated.append(save.appName)
+                            break
             else:
-                if downloadeddate > currentdate:
-                    print("Downloaded files are newer... overriding files")
-                    shutil.copytree(
-                        os.path.join("tocheck", folder),
-                        os.path.join("saves", folder),
-                        dirs_exist_ok=True,
-                    )
-                    with open(os.path.join("saves", folder + ".txt"), "w") as f:
-                        f.write(downloadeddate + "\n")
-                        f.write(downloadedhash)
+                print(
+                    f"{bcolors.WARNING}Downloaded files are older... not overriding files{bcolors.ENDC}"
+                )
 
-                    for save in saveLocations:
-                        if save.appName == folder:
-                            for path in save.filePaths:
-                                if os.path.isdir(path):
-                                    updatedApps.append(save.appName)
-                                    shutil.copytree(
-                                        os.path.join("saves", folder),
-                                        path,
-                                        dirs_exist_ok=True,
-                                    )
-                                    break
-                                if os.path.isfile(path):
-                                    updatedApps.append(save.appName)
-                                    shutil.copy2(
-                                        os.path.join(
-                                            "saves",
-                                            folder,
-                                            os.listdir(
-                                                os.path.join("saves", folder)[0]
-                                            ),
-                                        ),
-                                        path,
-                                    )
-                                    break
-                else:
-                    print(
-                        f"{bcolors.WARNING}Downloaded files are older... not overriding files{bcolors.ENDC}"
-                    )
-            print(
-                f"{bcolors.LINE}---------------------------------------------------------------------------{bcolors.ENDC}"
-            )
+            print_separator("-")
+        break  # top-level only
 
-        shutil.rmtree("tocheck")
+    shutil.rmtree("tocheck", True)
 
-    if updatedApps:
-        if len(updatedApps) > 1:
-            updatedString = f"{', '.join(updatedApps[:-1])}, and {updatedApps[-1]}"
-            print(
-                f"{bcolors.OKBLUE}",
-                updatedString,
-                f"now have the newest save data{bcolors.ENDC}",
-            )
-        else:
-            updatedString = updatedApps[0]
-            print(
-                f"{bcolors.OKBLUE}",
-                updatedString,
-                f"now has the newest save data{bcolors.ENDC}",
-            )
+    if updated:
+        noun = "have" if len(updated) > 1 else "has"
+        names = (
+            f"{', '.join(updated[:-1])}, and {updated[-1]}"
+            if len(updated) > 1
+            else updated[0]
+        )
+        print(f"{bcolors.OKBLUE}{names} now {noun} the newest save data{bcolors.ENDC}")
     else:
         print(f"{bcolors.OKBLUE}Nothing has been overwritten{bcolors.ENDC}")
-    print(
-        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
-    )
+    print_separator()
 
 
 if __name__ == "__main__":
