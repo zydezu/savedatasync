@@ -1,32 +1,32 @@
 PS1 Memory Cards
-C:\Apps\Games\EMU\duckstation\memcards
+/home/zy/.local/share/duckstation/memcards
 
 PS2 Memory Cards
-C:\Apps\Games\EMU\pcsx2\memcards
+/home/zy/.config/PCSX2/memcards
 
 PCSX2 Settings
-C:\Apps\Games\EMU\pcsx2\inis
+/home/zy/.config/PCSX2/inis
 
 PS3 Saves
-C:\Apps\Games\EMU\rpcs3\dev_hdd0\home\00000001\savedata
+/home/zy/.config/rpcs3/dev_hdd0/home/00000001/savedata
 
 Dolphin Settings
-C:\Apps\Games\EMU\dolphin\User\GameSettings
+/home/zy/.local/share/dolphin-emu/GameSettings
 
 Dolphin Profiles
-C:\Apps\Games\EMU\dolphin\User\Config\Profiles
+/home/zy/.config/dolphin-emu/Profiles
 
 Gamecube Memory Card
-C:\Apps\Games\EMU\dolphin\User\GC
+/home/zy/.local/share/dolphin-emu/GC
 
 Mario Kart Wii
-C:\Apps\Games\EMU\dolphin\User\Wii\title\00010004\524d4345\data
+/home/zy/.local/share/dolphin-emu/Wii/title/00010004/524d4345/data
 
 Super Paper Mario
-C:\Apps\Games\EMU\dolphin\User\Wii\title\00010000\52385045\data
+/home/zy/.local/share/dolphin-emu/Wii/title/00010000/52385045/data
 
 Mario Kart Wii RetroWFC
-C:\Apps\Games\EMU\dolphin\User\Load\Riivolution\RetroRewind\riivolution\save\RetroWFC
+/home/zy/.local/share/dolphin-emu/Load/Riivolution/RetroRewind/riivolution/save/RetroWFC
 
 Sonic Unleashed (PC)
-C:\Users\User\AppData\Roaming\UnleashedRecomp
+/home/zy/.local/share/UnleashedRecomp

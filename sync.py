@@ -1,21 +1,25 @@
-from readFileLocations import *
-from downloadSavesToGit import download
-from uploadSavesToGit import upload
 import shutil
 import time
 
+from downloadSavesToGit import download
+from readFileLocations import *
+from uploadSavesToGit import upload
+
 os.system("")
+
+
 class bcolors:
-    LINE = '\033[90m'
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+    LINE = "\033[90m"
+    HEADER = "\033[95m"
+    OKBLUE = "\033[94m"
+    OKCYAN = "\033[96m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
+
 
 def remove_folder(path):
     try:
@@ -23,13 +27,19 @@ def remove_folder(path):
     except Exception as e:
         print(f"{bcolors.WARNING}Error removing folder {path}: {e}{bcolors.ENDC}")
 
+
 def print_separator():
-    print(f"{bcolors.LINE}==========================================================================={bcolors.ENDC}")
+    print(
+        f"{bcolors.LINE}==========================================================================={bcolors.ENDC}"
+    )
+
 
 def main():
     # update local files and times
     print_separator()
-    print(f"\n{bcolors.OKCYAN}Checking each application's save data for changes\n{bcolors.ENDC}")
+    print(
+        f"\n{bcolors.OKCYAN}Checking each application's save data for changes\n{bcolors.ENDC}"
+    )
     print_separator()
 
     saveLocations = readLocationsFile()
@@ -52,6 +62,7 @@ def main():
     print(f"{bcolors.WARNING}Closing in 5 seconds...{bcolors.ENDC}")
     print_separator()
     time.sleep(5)
+
 
 if __name__ == "__main__":
     main()
