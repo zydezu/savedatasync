@@ -1,5 +1,7 @@
 # savedatasync
 
+<img width="1366" height="786" alt="image" src="https://github.com/user-attachments/assets/6efac1f4-bae7-4b2b-9fbc-c5afb2144e11" />
+
 A terminal UI for syncing game save files to a GitHub repository. Tracks local changes, compares against remote, and lets you upload, download, or restore from backups. Useful for syncing your emulator saves across multiple machines.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/boysaremoe)
