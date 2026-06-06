@@ -2,6 +2,8 @@
 
 A terminal UI for syncing game save files to a GitHub repository. Tracks local changes, compares against remote, and lets you upload, download, or restore from backups. Useful for syncing your emulator saves across multiple machines.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/boysaremoe)
+
 ## Features
 
 - Status table showing local and remote state for all configured saves
@@ -86,3 +88,6 @@ Press `B` to browse local backups. Backups are stored in `backup/` as folders na
 - `backup/`, `temp/`, and `tocheck/` are gitignored and never uploaded
 - If a save has multiple paths, only the first existing one is used on each machine
 - Saves larger than 100 MB are not compressed; if the zip exceeds 100 MB the raw directory is used instead
+
+![2023-10-01_07-07-11_582_Vita3K](https://github.com/zydezu/savedatasync/assets/50119098/008ae336-b24b-4d6c-bf30-329a38cb1932)
+![Shin Megami Tensei - Persona 3 FES_SLUS-21621_20240512203921](https://github.com/user-attachments/assets/e35615bf-77dd-4acd-92cb-9fd3567156f4)
