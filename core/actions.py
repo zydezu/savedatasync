@@ -22,7 +22,7 @@ def _stage_save(st: Status) -> bool:
         shutil.copy2(path, save_dir)
     else:
         zip_path = save_dir + ".zip"
-        if dir_size(path) >= 200_000_000:
+        if dir_size(path) >= 100_000_000:
             # Raw size already too large — compression can't bring it under GitHub's
             # 100 MB per-file limit, so store the directory directly instead.
             shutil.copytree(path, save_dir, dirs_exist_ok=True)
@@ -111,13 +111,17 @@ def do_download(statuses: list[Status]) -> None:
 
         for path in st.save.paths:
             if os.path.isdir(path):
-                shutil.copytree(os.path.join("saves", st.save.name), path, dirs_exist_ok=True)
+                shutil.copytree(
+                    os.path.join("saves", st.save.name), path, dirs_exist_ok=True
+                )
                 print(f"  {C.GREEN}✓{C.RESET} {st.save.name} → {path}")
                 break
             if os.path.isfile(path):
                 save_files = os.listdir(os.path.join("saves", st.save.name))
                 if save_files:
-                    shutil.copy2(os.path.join("saves", st.save.name, save_files[0]), path)
+                    shutil.copy2(
+                        os.path.join("saves", st.save.name, save_files[0]), path
+                    )
                 print(f"  {C.GREEN}✓{C.RESET} {st.save.name} → {path}")
                 break
 
